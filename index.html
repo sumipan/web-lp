@@ -75,6 +75,12 @@
     header.sc .h-cta{color:var(--forest);border-color:var(--forest);background:transparent;}
     .h-cta:hover{background:var(--forest);color:#fff;border-color:var(--forest);}
     @media(max-width:768px){header{padding:0 1.25rem;}}
+    @media(max-width:480px){
+      .h-left{gap:.5rem;min-width:0;flex-shrink:1;}
+      .h-logo{font-size:1rem;letter-spacing:.25em;white-space:nowrap;}
+      .h-sub{font-size:.5rem;letter-spacing:.15em;white-space:nowrap;}
+      .h-cta{font-size:.62rem;letter-spacing:.08em;padding:.55rem .8rem;white-space:nowrap;flex-shrink:0;}
+    }
 
     /* ===== REVEAL ANIMATIONS ===== */
     .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
@@ -590,6 +596,8 @@
     <div class="menu-note rv d1">
       ※醸造所からの直送となるため、6本セットのみの販売です。二度と同じ味は作りません。<br/>
       ※ 未成年者へのお酒の提供はできません。<br/>
+      ※ 内容量 500ml<br/>
+      ※ アルコール分 8度<br/>
       ※ 送料込み（6本セット）
     </div>
     <div class="menu-grid rv d2">
@@ -599,7 +607,7 @@
         <div class="menu-badge">醸造所からの直送</div>
         <div class="menu-price"><sup>¥</sup>25,000</div>
         <div class="menu-tax">税込</div>
-        <div class="menu-detail">限定50セット・売り切れ次第終了<br/>送料込み</div>
+        <div class="menu-detail">限定50セット・売り切れ次第終了<br/>送料込み<br/>6月中旬発送予定</div>
       </div>
       <div class="menu-card">
         <div class="menu-num">Menu 02</div>
@@ -659,8 +667,8 @@
     <span class="s-lbl rv">Community</span>
     <h2 class="s-h2 rv d1">コルクラボの<br/><em>みんなで作りました</em></h2>
     <div class="members-intro-wrap rv d2">
-      <p class="members-intro-line">イベント企画、ホームページ制作、SNS運用、そして醸造工程への参加まで。メンバーがそれぞれの強みを持ち寄り、「作る」と「届ける」を一気通貫で形にしました。</p>
-      <p class="members-intro-line" style="margin-top:1rem;">ただ"作る"のではなく、そこに込められた想いや物語まで届ける。コミュニティの熱量と共創から生まれたプロジェクトです。</p>
+      <p class="members-intro-line">今回のプロジェクトは、つくる人だけで完成するものではなく、飲んでくださる方の時間や感情も重なって、はじめて完成するものだと思っています。</p>
+      <p class="members-intro-line" style="margin-top:1rem;">ぜひ、それぞれの「あわい」を楽しんでください♪</p>
     </div><div class="members-grid">
       <div class="member-card rv d1"><div class="member-av"><img src="images/image-13.png" alt="サディ" style="width:80px;height:80px;border-radius:50%;object-fit:cover;"/></div><div class="member-name">サディ</div><span class="member-role">プロデューサー</span></div>
       <div class="member-card rv d2"><div class="member-av"><img src="images/image-14.png" alt="アヤペー" style="width:80px;height:80px;border-radius:50%;object-fit:cover;"/></div><div class="member-name">アヤペー</div><span class="member-role">プロジェクトマネージャー</span></div>
