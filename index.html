@@ -282,7 +282,7 @@
     /* ===== FLOATING ORDER BTN (mobile) ===== */
     .float-order{display:none;position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:400;}
     @media(max-width:768px){
-      .float-order{display:block;}
+      .float-order.visible{display:block;}
       .float-order a{display:inline-flex;align-items:center;gap:.6rem;font-family:'Noto Serif JP',serif;font-weight:500;font-size:.78rem;letter-spacing:.18em;color:#fff;background:var(--forest);padding:.85rem 2.2rem;text-decoration:none;border-radius:2px;box-shadow:0 6px 24px rgba(42,74,53,.4);}
     }
   
@@ -742,9 +742,14 @@ function updateProgress() {
 
 // HEADER SCROLL
 const hd = document.getElementById('hd');
+const floatOrder = document.querySelector('.float-order');
+const heroSection = document.getElementById('hero');
 window.addEventListener('scroll', () => {
   hd.classList.toggle('sc', window.scrollY > 60);
   updateProgress();
+  if (floatOrder && heroSection) {
+    floatOrder.classList.toggle('visible', heroSection.getBoundingClientRect().bottom <= 0);
+  }
 });
 
 // CUSTOM CURSOR
