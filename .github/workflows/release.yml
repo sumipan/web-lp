@@ -18,6 +18,12 @@ jobs:
         id: tag
         run: echo "tag=$(date +'%Y%m%d%H%M%S')" >> "$GITHUB_OUTPUT"
 
+      - name: Rewrite OGP URLs for production
+        run: |
+          sed -i \
+            -e 's|https://sumipan\.github\.io/web-lp/|https://sake-awai.corkagency.com/|g' \
+            index.html
+
       - name: Create ZIP
         run: |
           zip -r web-lp-${{ steps.tag.outputs.tag }}.zip . \
