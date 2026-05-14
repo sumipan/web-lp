@@ -756,11 +756,14 @@ function updateProgress() {
 const hd = document.getElementById('hd');
 const floatOrder = document.querySelector('.float-order');
 const heroSection = document.getElementById('hero');
+const ctaSection = document.getElementById('cta-final');
 window.addEventListener('scroll', () => {
   hd.classList.toggle('sc', window.scrollY > 60);
   updateProgress();
   if (floatOrder && heroSection) {
-    floatOrder.classList.toggle('visible', heroSection.getBoundingClientRect().bottom <= 0);
+    const heroGone = heroSection.getBoundingClientRect().bottom <= 0;
+    const ctaVisible = ctaSection ? ctaSection.getBoundingClientRect().top < window.innerHeight : false;
+    floatOrder.classList.toggle('visible', heroGone && !ctaVisible);
   }
 });
 
