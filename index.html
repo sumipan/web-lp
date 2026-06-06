@@ -223,12 +223,16 @@
 
     /* ===== ORDER SECTION ===== */
     .menu-note{font-weight:300;font-size:.82rem;color:var(--textmid);line-height:2;margin-bottom:2.5rem;padding:1.2rem 1.5rem;background:#fff;border:1px solid rgba(196,163,90,.2);border-left:3px solid var(--gold);}
-    .menu-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:3rem;}
+    .menu-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:0;}
     @media(min-width:768px){.menu-grid{grid-template-columns:repeat(3,1fr);}}
-    .menu-card{background:#fff;border:1px solid rgba(196,163,90,.2);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:all .4s ease;}
+    .menu-card{background:#fff;border:1px solid rgba(196,163,90,.2);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:all .4s ease;height:100%;display:flex;flex-direction:column;}
     .menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forest),var(--sage));transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
-    .menu-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(42,74,53,.1);}
-    .menu-card:hover::before{transform:scaleX(1);}
+.menu-card.sold-out{opacity:.6;cursor:not-allowed;}
+    .menu-card.sold-out:hover{transform:none;box-shadow:none;}
+    .menu-card.sold-out:hover::before{transform:scaleX(0);}
+    .menu-badge.soldout-badge{color:#c0392b;border-color:rgba(192,57,43,.45);background:rgba(192,57,43,.06);font-weight:700;letter-spacing:.25em;}
+    .menu-card .btn-order{margin-top:1.5rem;width:100%;justify-content:center;padding:1rem 1.6rem;font-size:.82rem;box-shadow:none;}
+    .menu-card.sold-out .btn-order{background:#a8a8a8;box-shadow:none;border-color:transparent;pointer-events:none;}
     .menu-num{font-family:'Cormorant Garamond',serif;font-size:.65rem;letter-spacing:.7em;color:var(--gold);text-transform:uppercase;margin-bottom:1.2rem;border-left:2px solid var(--gold);padding-left:.6rem;}
     .menu-title{font-family:'Shippori Mincho B1',serif;font-size:clamp(.78rem,1.4vw,.92rem);color:var(--forest);font-weight:600;letter-spacing:.04em;line-height:1.5;margin-bottom:.8rem;}
     .menu-badge{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:.55rem;letter-spacing:.35em;color:var(--sage);border:1px solid rgba(107,158,114,.3);padding:.2rem .7rem;text-transform:uppercase;margin-bottom:1.5rem;}
@@ -633,6 +637,10 @@
         <div class="menu-price"><sup>¥</sup>25,000</div>
         <div class="menu-tax">税込</div>
         <div class="menu-detail">限定50セット・売り切れ次第終了<br>送料込み<br>6月上旬より順次お届け</div>
+        <a class="btn-order" href="https://corkstore.jp/collections/corklab/products/600018590000" target="_blank" rel="noopener">
+          <span>注文ページへ</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
       </div>
       <div class="menu-card">
         <div class="menu-num">Menu 02</div>
@@ -641,24 +649,25 @@
         <div class="menu-price"><sup>¥</sup>5,000</div>
         <div class="menu-tax">税込</div>
         <div class="menu-detail">7月13日(月) 18時〜<br>立ち飲みスタイル交流会の参加券！佐渡島が作るおつまみ付き。</div>
+        <a class="btn-order" href="https://corkstore.jp/collections/corklab/products/600018600000" target="_blank" rel="noopener">
+          <span>注文ページへ</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
       </div>
-      <div class="menu-card">
+      <div class="menu-card sold-out" aria-disabled="true">
         <div class="menu-num">Menu 03</div>
         <div class="menu-title">レストラン「ペソア」ご招待 ＆ 「あわい」6本セット付き</div>
-        <div class="menu-badge">1名様限定（2名様まで来店可）</div>
+        <div class="menu-badge soldout-badge">※売り切れ</div>
         <div class="menu-price"><sup>¥</sup>100,000</div>
         <div class="menu-tax">税込</div>
         <div class="menu-detail">
           <p style="margin-bottom:.5rem;">佐渡島の自宅レストラン「ペソア」でのフルコース体験</p>
           <p>日付などは購入後、DMにてご相談。「あわい」6本セット付き。</p>
         </div>
+        <div class="btn-order">
+          <span>売り切れ</span>
+        </div>
       </div>
-    </div>
-    <div class="rv d3" style="text-align:center;">
-      <a class="btn-order" href="https://corkstore.jp/collections/corklab" target="_blank" rel="noopener" data-manus_clickable="true" data-manus_click_id="11">
-        <span>コルクショップで注文する</span>
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-      </a>
     </div>
   </div>
 </section>
@@ -766,14 +775,14 @@ function updateProgress() {
 const hd = document.getElementById('hd');
 const floatOrder = document.querySelector('.float-order');
 const heroSection = document.getElementById('hero');
-const ctaSection = document.getElementById('cta-final');
+const orderSection = document.getElementById('order');
 window.addEventListener('scroll', () => {
   hd.classList.toggle('sc', window.scrollY > 60);
   updateProgress();
   if (floatOrder && heroSection) {
     const heroGone = heroSection.getBoundingClientRect().bottom <= 0;
-    const ctaVisible = ctaSection ? ctaSection.getBoundingClientRect().top < window.innerHeight : false;
-    floatOrder.classList.toggle('visible', heroGone && !ctaVisible);
+    const orderGone = orderSection ? orderSection.getBoundingClientRect().top < window.innerHeight : false;
+    floatOrder.classList.toggle('visible', heroGone && !orderGone);
   }
 });
 
